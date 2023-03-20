@@ -5,7 +5,8 @@ export interface IListProps extends HTMLAttributes<HTMLOrSVGElement> {
 	items: { href: string; element: ReactElement | string }[];
 	type: 'column' | 'table';
 	as?: ElementType;
-	align?: 'start' | 'center' | 'end';
+	alignItems?: 'start' | 'center' | 'end';
+	textAlign?: 'left' | 'right';
 }
 
 const List: FC<IListProps> = ({
@@ -13,29 +14,36 @@ const List: FC<IListProps> = ({
 	items,
 	type,
 	as: Tag = 'a',
-	align = 'start'
+	alignItems = 'start',
+	textAlign = 'left'
 }) => {
-	const alignVariants = {
+	const alignItemsVariants = {
 		start: 'items-start',
 		center: 'items-center',
-		end: 'items-end'
+		end: 'items-start lg:items-end'
+	};
+	const textAlignVariants = {
+		left: 'text-left',
+		right: 'text-left lg:text-right'
 	};
 	const typeVariants = {
-		column: `flex flex-col gap-y-[10px] ${alignVariants[align]}`,
+		column: `flex flex-col gap-y-[10px] ${alignItemsVariants[alignItems]}`,
 		table: 'grid grid-cols-2 gap-x-[52px] gap-y-[10px]'
 	};
 
 	return (
-		<div>
-			<h5 className='uppercase text-[14px] leading-[16px] text-zinc-500 font-bold tracking-wide'>
+		<div className='w-fit'>
+			<h5
+				className={`${textAlignVariants[textAlign]} uppercase text-[14px] leading-[16px] text-zinc-500 font-bold tracking-wide`}
+			>
 				{heading}
 			</h5>
-			<nav className={`${typeVariants[type]} text-slate-200 mt-[20px]`}>
+			<nav className={`${typeVariants[type]} text-slate-200 mt-[20px] w-fit`}>
 				{items.map((item, i) => (
 					<Tag
 						key={i}
 						href={item.href}
-						className='block text-slate-200 block text-[14px] leading-[16px]'
+						className='block text-slate-200 block text-[14px] leading-[16px] w-fit'
 					>
 						{item.element}
 					</Tag>

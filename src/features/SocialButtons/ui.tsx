@@ -8,17 +8,9 @@ interface IButtonProps {
 	href: string;
 	children: ReactElement;
 }
-// todo подумай
-const Button: FC<IButtonProps> = ({ href, children }) => {
-	return (
-		<a
-			href={href}
-			className='inline-block'
-		>
-			{children}
-		</a>
-	);
-};
+interface ISocialButtonsProps {
+	gap?: 'sm' | 'base';
+}
 
 const list: IButtonProps[] = [
 	{
@@ -35,9 +27,16 @@ const list: IButtonProps[] = [
 	}
 ];
 
-interface ISocialButtonsProps {
-	gap?: 'sm' | 'base';
-}
+const Button: FC<IButtonProps> = ({ href, children }) => {
+	return (
+		<a
+			href={href}
+			className='inline-block'
+		>
+			{children}
+		</a>
+	);
+};
 
 const SocialButtons: FC<ISocialButtonsProps> = ({ gap = 'base' }) => {
 	const gapVariants = {

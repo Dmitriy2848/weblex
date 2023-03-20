@@ -70,7 +70,8 @@ const content: IListProps[] = [
 	{
 		type: 'column',
 		as: 'span',
-		align: 'end',
+		alignItems: 'end',
+		textAlign: 'right',
 		heading: 'Контакты',
 		items: [
 			{
@@ -91,8 +92,8 @@ const content: IListProps[] = [
 
 const Footer: FC = () => {
 	return (
-		<footer className='mx-[10%] mt-[55px]'>
-			<div className='w-full flex justify-between '>
+		<footer className='mt-[55px] mx-[10px] md:mx-[5%] xl:mx-[10%]'>
+			<div className='w-full flex justify-between flex-col lg:flex-row gap-y-[30px]'>
 				{content.map((el, i) => (
 					<List
 						key={i}
@@ -100,11 +101,12 @@ const Footer: FC = () => {
 						items={el.items}
 						type={el.type}
 						as={el.as}
-						align={el.align}
+						alignItems={el.alignItems}
+						textAlign={el.textAlign}
 					/>
 				))}
 			</div>
-			<div className='flex flex-col items-end text-[12px] leading-[14px] font-light text-slate-200 mt-[33px]'>
+			<div className='flex flex-col items-start lg:items-end text-[12px] leading-[14px] font-light text-slate-200 mt-[33px] '>
 				<span>©WELBEX 2022. Все права защищены.</span>
 				<a
 					href='/'

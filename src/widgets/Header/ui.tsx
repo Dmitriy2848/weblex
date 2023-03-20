@@ -6,40 +6,39 @@ import PhoneNumber from 'entities/PhoneNumber';
 
 import { ReactComponent as Logo } from 'shared/assets/logo.svg';
 
-// todo типизируй
-const routes = [
-	{
-		href: '/',
-		text: 'Услуги'
-	},
-	{
-		href: '/',
-		text: 'Виджеты'
-	},
-	{
-		href: '/',
-		text: 'Интеграции'
-	},
-	{
-		href: '/',
-		text: 'Кейсы'
-	},
-	{
-		href: '/',
-		text: 'Сертификаты'
-	}
-];
-
 interface INavLinkProps {
 	href: string;
 	children: string;
 }
 
+const routes: INavLinkProps[] = [
+	{
+		href: '/',
+		children: 'Услуги'
+	},
+	{
+		href: '/',
+		children: 'Виджеты'
+	},
+	{
+		href: '/',
+		children: 'Интеграции'
+	},
+	{
+		href: '/',
+		children: 'Кейсы'
+	},
+	{
+		href: '/',
+		children: 'Сертификаты'
+	}
+];
+
 const NavLink: FC<INavLinkProps> = ({ href, children }) => {
 	return (
 		<a
 			href={href}
-			className='text-[16px] text-slate-200 leading-[19px]'
+			className='uppercase text-[12px] leading-[15px] md:capitalize md:text-[16px] text-slate-200 md:leading-[19px]'
 		>
 			{children}
 		</a>
@@ -48,8 +47,8 @@ const NavLink: FC<INavLinkProps> = ({ href, children }) => {
 
 const Header: FC = () => {
 	return (
-		<div className='mx-[10%] mt-[46px] flex justify-between'>
-			<div>
+		<div className='px-[10px] md:px-[5%] xl:px-[10%] md:mt-[46px] py-[15px] flex justify-between bg-[#0E1014] md:bg-transparent'>
+			<div className='hidden md:block'>
 				<a href='/'>
 					<span className='block mb-[10px]'>
 						<Logo />
@@ -60,19 +59,21 @@ const Header: FC = () => {
 				</a>
 			</div>
 
-			<nav className='flex gap-[30px] h-fit'>
+			<nav className='flex gap-[5px] md:gap-[30px] h-fit justify-between lg:w-fit w-full'>
 				{routes.map((route, i) => (
 					<NavLink
 						key={i}
 						href={route.href}
 					>
-						{route.text}
+						{route.children}
 					</NavLink>
 				))}
 			</nav>
 
-			<PhoneNumber />
-			<SocialButtons />
+			<div className='flex-row gap-[20px] xl:gap-[40px] h-fit hidden lg:flex'>
+				<PhoneNumber />
+				<SocialButtons />
+			</div>
 		</div>
 	);
 };

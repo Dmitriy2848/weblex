@@ -6,24 +6,23 @@ const presents = [
 	{ heading: 'Skype Аудит', text: 'отдела продаж и CRM системы' },
 	{ heading: '35 дней', text: 'использования CRM' }
 ];
-// todo замени на падинги
 
 const Content: FC = () => {
 	return (
-		<main className='mt-[90px] mx-[10%] mb-[70px] flex justify-between'>
-			<div>
-				<h1 className='text-slate-200 text-[48px] leading-[58px] max-w-[365px]'>
-					Зарабатывай больше
+		<main className='pt-[90px] px-[10px] md:px-[5%] lg:px-[10%] pb-[70px] flex flex-col md:flex-row items-center md:items-start justify-between'>
+			<div className='w-full md:max-w-[275px]'>
+				<h1 className='text-slate-200 text-[36px] leading-[44px] md:text-[48px] md:leading-[58px] max-w-[365px]'>
+					Зарабатывайте больше
 					<br />
 					<span className='font-black bg-clip-text bg-gradient-to-r text-transparent from-amber-300 to-red-500'>
 						с WEBLEX
 					</span>
 				</h1>
-				<span className='inline-block mt-[30px] text-[18px] leading-[22px] text-slate-200 font-light max-w-[275px]'>
+				<span className='inline-block mt-[30px] text-[18px] leading-[22px] text-slate-200 font-light'>
 					Развиваем и контролируем продажи за вас
 				</span>
 			</div>
-			<div className='text-right text-slate-200'>
+			<div className='text-left md:text-right text-slate-200 w-full md:max-w-[275px] mt-[45px] md:mt-0'>
 				<h5>
 					Вместе с{' '}
 					<span className='uppercase text-[18px] leading-[22px] font-bold bg-clip-text bg-gradient-to-r text-transparent from-amber-300 to-red-500'>
